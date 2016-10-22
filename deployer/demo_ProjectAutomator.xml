@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><DeployerSpec exitOnError="true" sourceType="Repository">
+	<DeployerServer>
+	<host>localhost:5556</host>
+	<user>Administrator</user>
+	<pwd>{AES}Y5IgMqjfvkgbg7p5VUZztw==</pwd>
+	<!-- <pwdHandle>$(PasswordHandle)</pwdHandle> -->
+</DeployerServer>
+<Environment>
+	<Repository>
+		<repalias name="DEMO_Repository">
+			<type>FlatFile</type> 
+			<urlOrDirectory>/home/inbda/output</urlOrDirectory>
+			<Test>false</Test>
+		</repalias>
+	</Repository>
+	<IS>
+		<isalias name="DEV_IS">
+			<host>localhost</host>
+			<port>5556</port>
+			<user>Administrator</user>
+			<pwd>{AES}Y5IgMqjfvkgbg7p5VUZztw==</pwd>
+			<!-- <pwdHandle>$(PasswordHandle)</pwdHandle> -->
+			<useSSL>false</useSSL>
+			<version>9.12</version>
+			<installDeployerResource>false</installDeployerResource>
+			<Test>false</Test>
+			<executeACL>Internal</executeACL>
+		</isalias>
+	</IS>
+</Environment>
+<Projects projectPrefix="">
+	<Project description="Demo_Project" name="Demo_Project" overwrite="true" type="Repository">
+		<ProjectProperties>
+			<Property name="projectLocking">false</Property>
+			<Property name="concurrentDeployment">true</Property>
+			<Property name="ignoreMissingDependencies">true</Property>
+			<Property name="isTransactionalDeployment">true</Property>
+		</ProjectProperties>
+		<DeploymentSet autoResolve="ignore" description="Demo_Set" name="Demo_Set" srcAlias="DEMO_Repository">
+			<Composite name="demo" srcAlias="DEMO_Repository" type="IS"/>
+		</DeploymentSet>
+		<DeploymentMap description="Demo_Map" name="Demo_Map"/>
+			<MapSetMapping mapName="Demo_Map" setName="Demo_Set">
+				<alias type="IS">DEV_IS</alias>
+			</MapSetMapping>
+		<DeploymentCandidate description="Demo_Candidate" mapName="Demo_Map" name="Demo_Candidate"/>
+	</Project>
+</Projects>
+</DeployerSpec>

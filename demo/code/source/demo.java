@@ -1,7 +1,7 @@
 
 
 // -----( IS Java Code Template v1.2
-// -----( CREATED: 2016-10-21 14:05:02 IST
+// -----( CREATED: 2016-10-26 13:06:17 IST
 // -----( ON-HOST: centos.inbda.01
 
 import com.wm.data.*;
@@ -32,6 +32,7 @@ public final class demo
 	{
 		// --- <<IS-START(hello)>> ---
 		// @sigtype java 3.5
+		IDataUtil.put(pipeline.getCursor(), "result", "Hello World!!!");
 		IDataUtil.put(pipeline.getCursor(), "result", "Hello World!!!");
 		// --- <<IS-END>> ---
 

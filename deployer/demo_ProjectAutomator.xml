@@ -38,7 +38,7 @@
 		</ProjectProperties>
 		<DeploymentSet autoResolve="ignore" description="Demo_Set" name="Demo_Set" srcAlias="DEMO_Repository">
 			<Composite name="demo" srcAlias="DEMO_Repository" type="IS"/>
-			<Composite name="WmServiceMockSamples" srcAlias="DEMO_Repository" type="IS"/>
+			<Composite name="aWmServiceMockSamples" srcAlias="DEMO_Repository" type="IS"/>
 		</DeploymentSet>
 		<DeploymentMap description="Demo_Map" name="Demo_Map"/>
 			<MapSetMapping mapName="Demo_Map" setName="Demo_Set">

@@ -9,7 +9,7 @@
 	<Repository>
 		<repalias name="DEMO_Repository">
 			<type>FlatFile</type> 
-			<urlOrDirectory>/home/inbda/output</urlOrDirectory>
+			<urlOrDirectory>/home/inbda/buildworkspace/output</urlOrDirectory>
 			<Test>false</Test>
 		</repalias>
 	</Repository>

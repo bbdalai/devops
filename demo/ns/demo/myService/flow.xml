@@ -25,6 +25,7 @@
 
 <MAP TIMEOUT="" MODE="STANDALONE">
   <COMMENT></COMMENT>
+<<<<<<< HEAD
 </MAP>
 
 <SEQUENCE TIMEOUT="" EXIT-ON="FAILURE">
@@ -36,4 +37,11 @@
   <COMMENT></COMMENT>
 </MAP>
 </SEQUENCE>
+=======
+</BRANCH>
+
+<RETRY TIMEOUT="" COUNT="" BACK-OFF="" LOOP-ON="FAILURE">
+  <COMMENT></COMMENT>
+</RETRY>
+>>>>>>> refs/heads/master
 </FLOW>

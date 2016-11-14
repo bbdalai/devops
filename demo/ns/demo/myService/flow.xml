@@ -23,11 +23,25 @@
 </MAP>
 </BRANCH>
 
-<BRANCH TIMEOUT="">
+<MAP TIMEOUT="" MODE="STANDALONE">
   <COMMENT></COMMENT>
+<<<<<<< HEAD
 </BRANCH>
 
 <RETRY TIMEOUT="" COUNT="" BACK-OFF="" LOOP-ON="FAILURE">
   <COMMENT></COMMENT>
 </RETRY>
+=======
+</MAP>
+
+<SEQUENCE TIMEOUT="" EXIT-ON="FAILURE">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<MAP TIMEOUT="" MODE="STANDALONE">
+  <COMMENT></COMMENT>
+</MAP>
+</SEQUENCE>
+>>>>>>> refs/remotes/origin/master
 </FLOW>

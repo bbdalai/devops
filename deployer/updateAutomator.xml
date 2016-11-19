@@ -1,5 +1,5 @@
 <project name="update" default="update-file" basedir=".">
   <target name="update-file">
-        <replace file="demo_ProjectAutomator.xml" token="%%OUTPUT%%" value="${workspace}"/>
+        <replace file="demo_ProjectAutomator.xml" token="%%OUTPUT%%" value="${build_output}"/>
   </target>
 </project>

@@ -7,8 +7,8 @@
 	<property name="javac.debug" value="false" />
 
 	<property environment="env" />
-	<property name="webMethods.home" location="/home/user2/softwareag"/>
-	<property name="wmtestsuite.home" location="/home/user2/softwareag/Designer/eclipse/plugins/com.sag.gcs.wmtestsuite_9.12.0.0000-0103/resources/jars"/>
+	<property name="webMethods.home" location="/home/user1/softwareag"/>
+	<property name="wmtestsuite.home" location="/home/user1/softwareag/Designer/eclipse/plugins/com.sag.gcs.wmtestsuite_9.12.0.0000-0103/resources/jars"/>
 	<property name="httpunit.home" location="${wmtestsuite.home}"/>
 	<property name="jxpath.home" location="${wmtestsuite.home}"/>
 	<property name="xmunit.home" location="${wmtestsuite.home}"/>

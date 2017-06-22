@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><DeployerSpec exitOnError="true" sourceType="Repository">
 	<DeployerServer>
-	<host>localhost:5556</host>
+	<host>localhost:5555</host>
 	<user>Administrator</user>
 	<pwd>{AES}Y5IgMqjfvkgbg7p5VUZztw==</pwd>
 	<!-- <pwdHandle>$(PasswordHandle)</pwdHandle> -->

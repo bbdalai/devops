@@ -16,7 +16,7 @@
 	<IS>
 		<isalias name="DEV_IS">
 			<host>localhost</host>
-			<port>5556</port>
+			<port>5555</port>
 			<user>Administrator</user>
 			<pwd>{AES}Y5IgMqjfvkgbg7p5VUZztw==</pwd>
 			<!-- <pwdHandle>$(PasswordHandle)</pwdHandle> -->

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="mytest" default="run-test" basedir=".">
+	<description>description</description>
+
+	<!-- SET THE GLOBAL PROPERTIES -->
+
+	<property name="javac.debug" value="false" />
+
+	<property environment="env" />
+	<property name="webMethods.home" location="/home/user1/softwareag"/>
+	<property name="wmtestsuite.home" location="/home/user1/softwareag/Designer/eclipse/plugins/com.sag.gcs.wmtestsuite_9.12.0.0000-0103/resources/jars"/>
+	<property name="httpunit.home" location="${wmtestsuite.home}"/>
+	<property name="jxpath.home" location="${wmtestsuite.home}"/>
+	<property name="xmunit.home" location="${wmtestsuite.home}"/>
+	<property name="serviceMockClient.jars.home" location="${wmtestsuite.home}"/>
+
+
+	<!-- READ ADDITIONAL PROPERTIES FROM COMMON PROPERTIES FILE  -->
+
+	<property file="${basedir}/build.properties" />
+	<property file="${user.home}/build.properties" />
+
+	<property name="resource.dir" location="${webMethods.package.dir}/resources" />
+	<property name="test.build.dir" location="${resource.dir}/test/classes" />
+	<property name="test.reports.dir" location="${resource.dir}/test/reports" />
+
+	<!-- ASSIGN PROFILE NAME FROM USER.NAME, IF NOT PRESENT -->
+
+	<condition property="profile.name" value="${user.name}">
+		<not>
+			<isset property="profile.name"/>
+		</not>
+	</condition>
+
+	<!-- READ ADDITIONAL PROPERTIES FROM USER'S PROPERTIES FILE -->
+	<property file="${resource.dir}/../default.properties"/>
+	<property file="${resource.dir}/${profile.name}.properties"/>
+
+	<!-- SETUP CLASSPATHS AND OTHER REFERENCES -->
+
+	<path id="classpath.webMethods">
+		<fileset dir="${webMethods.home}/IntegrationServer/lib">
+			<include name="wm-isserver.jar"/>
+		</fileset>
+		<fileset dir="${webMethods.home}/common/lib">
+			<include name="wm-isclient.jar"/>
+		</fileset>
+		<fileset dir="${webMethods.home}/IntegrationServer/lib/jars"/>
+	</path>
+
+	<path id="classpath.project">
+		<fileset dir="${serviceMockClient.jars.home}">
+			<include name="serviceInterceptor.jar"/>
+			<include name="serviceMockClient.jar"/>
+			<include name="gf.javax.mail.jar"/>
+			<include name="wmjxpath.jar"/>
+		</fileset>
+		<fileset dir="${httpunit.home}">
+			<include name="httpunit.jar"/>
+			<include name="junit.jar"/>
+		</fileset>
+		<fileset dir="${jxpath.home}">
+			<include name="commons-jxpath-1.2.jar"/>
+		</fileset>
+		<fileset dir="${xmunit.home}">
+			<include name="xmlunit1.0.jar"/>
+		</fileset>
+	</path>
+
+	<path id="classpath.all">
+		<path refid="classpath.webMethods"/>
+		<path refid="classpath.project"/>
+	</path>
+
+	<!-- TARGETS -->
+
+	<target name="check-is-started" description="Checks if the webMethods Integration Server is running">
+		<condition property="is.server.running">
+			<and>
+				<socket port="${webMethods.integrationServer.port}" server="${webMethods.integrationServer.name}"/>
+			</and>
+		</condition>
+	</target>
+
+	<target name="start-is" description="Starts the webMethods Integration Server, if not running"
+	        depends="check-is-started" unless="is.server.running">
+		<parallel>
+			<daemons>
+				<exec executable="cmd">
+					<arg line="/c ${webMethods.home}/IntegrationServer/instances/${webMethods.integrationServer.target.alias}/bin/server.bat"/>
+				</exec>
+			</daemons>
+			<sequential>
+				<waitfor maxwait="5" maxwaitunit="minute" checkevery="500" timeoutproperty="wm.timeout">
+					<and>
+						<socket server="${webMethods.integrationServer.name}" port="${webMethods.integrationServer.port}"/>
+					</and>
+				</waitfor>
+				<fail if="wm.timeout" message="webMethods Integration Server failed to start."/>
+				<echo message="webMethods Integration Server started."/>
+			</sequential>
+		</parallel>
+	</target>
+
+	<target name="run-test" depends="start-is">
+		<antcall target="test-setup-1-xml"/>
+	</target>
+
+
+	<target name="test-setup-1-xml" >
+		<mkdir dir="${test.reports.dir}"/>
+		<junit printsummary="yes"
+			haltonfailure="no" fork="true"
+			failureproperty="test:failure"
+			showoutput="true" dir="${webMethods.package.dir}">
+			<jvmarg value="-DwebMethods.integrationServer.name=${webMethods.integrationServer.name}"/>
+			<jvmarg value="-DwebMethods.integrationServer.port=${webMethods.integrationServer.port}"/>
+			<jvmarg value="-DwebMethods.integrationServer.userid=${webMethods.integrationServer.userid}"/>
+			<jvmarg value="-DwebMethods.integrationServer.password=${webMethods.integrationServer.password}"/>
+			<jvmarg value="-DwebMethods.test.setup.filename=${webMethods.test.setup.filename}"/>
+			<jvmarg value="-Dresources.folder=${resource.dir}" />
+			<classpath>
+				<path refid="classpath.all" />
+				<pathelement location="${test.build.dir}" />
+			</classpath>
+			<formatter type="xml"/>
+			<test name="com.wm.ps.test.WmTestSuite" outfile="TEST-wmTestSuite" haltonerror="false" haltonfailure="false" todir="${test.reports.dir}"/>
+		</junit>
+
+		<junitreport todir="${test.reports.dir}">
+			<fileset dir="${test.reports.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${test.reports.dir}/html" />
+		</junitreport>
+	</target>
+
+</project>

@@ -4,7 +4,8 @@
   <value name="name">jtest</value>
   <value name="encodeutf8">true</value>
   <value name="body">SURhdGFVdGlsLnB1dChwaXBlbGluZS5nZXRDdXJzb3IoKSwiTWVzc2FnZSIsIkhlbGxvIFdvcmxk
-ISEhIik7DQpJRGF0YVV0aWwucHV0KHBpcGVsaW5lLmdldEN1cnNvcigpLCJNZXNzYWdlMiIsIkhl
-bGxvIFdvcmxkISEhIik7DQpJRGF0YVV0aWwucHV0KHBpcGVsaW5lLmdldEN1cnNvcigpLCJNZXNz
-YWdlMyIsIkhlbGxvIFdvcmxkISEhIik7</value>
+ISEhIik7CklEYXRhVXRpbC5wdXQocGlwZWxpbmUuZ2V0Q3Vyc29yKCksIk1lc3NhZ2UyIiwiSGVs
+bG8gV29ybGQhISEiKTsKSURhdGFVdGlsLnB1dChwaXBlbGluZS5nZXRDdXJzb3IoKSwiTWVzc2Fn
+ZTMiLCJIZWxsbyBXb3JsZCEhISIpOwpJRGF0YVV0aWwucHV0KHBpcGVsaW5lLmdldEN1cnNvcigp
+LCJNZXNzYWdlNCIsIkhlbGxvIFdvcmxkISEhIik7</value>
 </Values>

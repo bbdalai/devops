@@ -33,6 +33,7 @@ public final class world
 		IDataUtil.put(pipeline.getCursor(),"Message","Hello World!!!");
 		IDataUtil.put(pipeline.getCursor(),"Message2","Hello World!!!");
 		IDataUtil.put(pipeline.getCursor(),"Message3","Hello World!!!");
+		IDataUtil.put(pipeline.getCursor(),"Message4","Hello World!!!");
 		// --- <<IS-END>> ---
 
                 

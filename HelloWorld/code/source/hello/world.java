@@ -31,6 +31,7 @@ public final class world
 		// --- <<IS-START(jtest)>> ---
 		// @sigtype java 3.5
 		IDataUtil.put(pipeline.getCursor(),"Message","Hello World!!!");
+		IDataUtil.put(pipeline.getCursor(),"Message2","Hello World!!!");
 			
 		// --- <<IS-END>> ---
 

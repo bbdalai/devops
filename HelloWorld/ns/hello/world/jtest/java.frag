@@ -4,5 +4,6 @@
   <value name="name">jtest</value>
   <value name="encodeutf8">true</value>
   <value name="body">SURhdGFVdGlsLnB1dChwaXBlbGluZS5nZXRDdXJzb3IoKSwiTWVzc2FnZSIsIkhlbGxvIFdvcmxk
-ISEhIik7Cgk=</value>
+ISEhIik7CklEYXRhVXRpbC5wdXQocGlwZWxpbmUuZ2V0Q3Vyc29yKCksIk1lc3NhZ2UyIiwiSGVs
+bG8gV29ybGQhISEiKTsKCQ==</value>
 </Values>
